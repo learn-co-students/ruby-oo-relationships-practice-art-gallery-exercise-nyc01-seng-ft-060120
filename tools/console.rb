@@ -31,6 +31,14 @@ gallery_one.artist_names
 gallery_one.most_expensive_painting
 Gallery.all
 
+jeff = Donor.new("Jeff")
+Donor.all
+jeff.new_donation(max, 12000)
+jeff.donations
+jeff.artists
+max.donations
+max.donors
+
 binding.pry
 
 puts "Bob Ross rules."

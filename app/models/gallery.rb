@@ -15,8 +15,7 @@ class Gallery
   end
 
   def artists
-    artists = self.paintings.map{|painting| painting.artist}
-    artists.uniq
+    self.paintings.map{|painting| painting.artist}.uniq
   end
 
   def artist_names

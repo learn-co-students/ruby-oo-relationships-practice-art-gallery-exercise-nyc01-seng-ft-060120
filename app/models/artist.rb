@@ -10,6 +10,14 @@ class Artist
     @@all << self
   end
 
+  def donations
+    Donation.all.select{|donation| donation.artist == self}
+  end
+
+  def donors
+    self.donations.map{|donation| donation.donor.name}.uniq
+  end
+
   def create_painting(title, price, gallery)
     Painting.new(title, price, self, gallery)
   end
@@ -19,13 +27,11 @@ class Artist
   end
 
   def galleries
-    galleries = self.paintings.map{|painting| painting.gallery}
-    galleries.uniq
+    self.paintings.map{|painting| painting.gallery}.uniq
   end
 
   def cities
-    cities = self.galleries.map{|gallery| gallery.city}
-    cities.uniq
+    self.galleries.map{|gallery| gallery.city}.uniq
   end
 
   def self.all
