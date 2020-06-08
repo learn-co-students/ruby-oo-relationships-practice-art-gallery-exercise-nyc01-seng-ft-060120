@@ -1,4 +1,8 @@
 require_relative '../config/environment.rb'
+artist = [  
+{name: Alex}
+{name: Farzad}
+{name: Teshawn}     
 
 
 
