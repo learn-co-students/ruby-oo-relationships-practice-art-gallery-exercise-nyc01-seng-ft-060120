@@ -31,10 +31,11 @@ end
 
 sally = Donor.new("Sally",20)
 aria = Donor.new("Aria",15)
+jerry = Donor.new("Jerry",10)
 
 davinci = Artist.new("Leonardo Da Vinci", 3,sally,aria)
 picasso = Artist.new("Pablo Picasso", 25,aria)
-turner = Artist.new("William Turner", 12,aria,sally)
+turner = Artist.new("William Turner", 12,aria,sally,jerry)
 
 haven = Gallery.new("Haven Gallery", "San Francisco")
 skylight = Gallery.new("Skylight Gallery","Dallas")
@@ -49,20 +50,7 @@ cubes = Painting.new("Cubism", 300,picasso,skylight)
 dawn = Painting.new("Dawn Rising",250,turner,haven)
 
 
-def foo(a,b,c,*others)
-  # this function has at least three arguments,
-  # but might have more
-  puts a
-  puts b
-  puts c
-  puts others
-end
-foo(1,2,3,4,5,6,7,8,9)
-# prints:
-# 1
-# 2
-# 3
-# 4,5,6,7,8,9
+
 
 binding.pry
 
