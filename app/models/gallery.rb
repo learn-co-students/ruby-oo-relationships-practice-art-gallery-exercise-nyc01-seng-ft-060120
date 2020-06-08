@@ -17,7 +17,7 @@ class Gallery
   end
 
   def artists
-    paintings.uniq.map { |painting| painting.artist }
+    paintings.map { |painting| painting.artist }.uniq
   end
 
   def artist_names
@@ -28,5 +28,5 @@ class Gallery
     paintings.max_by { |painting| painting.price }
   end
 
-  
+
 end

@@ -1,11 +1,12 @@
 class Artist
   @@all = []
 
-  attr_reader :name, :years_experience
+  attr_reader :name, :years_experience, :donor
 
-  def initialize(name, years_experience)
+  def initialize(name, years_experience, donor)
     @name = name
     @years_experience = years_experience
+    @donor = donor
     @@all << self
   end
 
@@ -22,7 +23,7 @@ class Artist
   end
 
   def cities
-    galleries.map { |gallery| gallery.city}
+    galleries.map { |gallery| gallery.city}.uniq
   end
 
   def self.total_experience
@@ -37,6 +38,8 @@ class Artist
     Painting.new(title, price, self, gallery)
   end
 
-
+  def show_donor
+    return "Donor: #{@donor.name} | Donor amt: #{@donor.amount}"
+  end
 
 end
