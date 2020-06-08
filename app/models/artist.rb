@@ -19,7 +19,7 @@ class Artist
   end
 
   def galleries
-    paintings.map { |painting| painting.gallery}
+    paintings.map { |painting| painting.gallery}.uniq
   end
 
   def cities
