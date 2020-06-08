@@ -20,7 +20,7 @@ class Gallery
   end 
 
   def artists 
-    paintings.map {|painting| painting.artist} #takes the array from the painting method and maps through it to return an array with all the artists from a specifci gallery
+    paintings.map {|painting| painting.artist} #takes the array from the painting method and maps through it to return an array with all the artists from a specific gallery
   end 
 
   def artist_names

@@ -42,7 +42,19 @@ class Artist
 
   def create_painting(title, price, gallery)
     Painting.new(title,price,self,gallery) #this method creates a new painting with the arguments passed and self (which refers to the artist being called on)
+    binding.pry
   end 
 
+  def donor_info
+    Donation.all.select {|donation| donation.artist == self}
+  end 
+
+  def total_amount_donated 
+    total = 0 
+    donor_info.each do |amount|
+      total += amount.amount
+    end 
+    total
+  end 
 end
 
