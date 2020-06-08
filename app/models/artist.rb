@@ -14,6 +14,10 @@ class Artist
     Donation.all.select{|donation| donation.artist == self}
   end
 
+  def total_donations
+    self.donations.sum{|donation| donation.amount}
+  end
+
   def donors
     self.donations.map{|donation| donation.donor.name}.uniq
   end

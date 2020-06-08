@@ -38,6 +38,7 @@ jeff.donations
 jeff.artists
 max.donations
 max.donors
+max.total_donations
 
 binding.pry
 
