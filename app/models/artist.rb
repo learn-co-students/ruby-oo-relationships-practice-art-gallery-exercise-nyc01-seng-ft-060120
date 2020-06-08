@@ -1,12 +1,14 @@
 class Artist
 
-  attr_reader :name, :years_experience
+  attr_reader :name, :years_experience 
+  attr_accessor :donor
 
   @@all = []
 
-  def initialize(name, years_experience)
+  def initialize(name, years_experience, donor)
     @name = name
     @years_experience = years_experience
+    @donor = donor
     @@all << self
   end
 
