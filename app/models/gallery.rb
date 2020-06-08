@@ -26,7 +26,7 @@ class Gallery
   end
 
   def most_expensive_painting
-    self.paintings.max {|a_painting,b_painting| a_painting.price <=> b_painting.price}
+    self.paintings.max_by{|painting_obj| painting_obj.price}
   end
 
 end

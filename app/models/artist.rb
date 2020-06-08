@@ -27,22 +27,12 @@ class Artist
     end
 
     def self.total_experience
-      yrs_array = Artist.all.map{|artist_obj| artist_obj.years_experience}
-      yrs_array.inject(0){|sum,i| sum + i}
+      self.all.inject(0){|sum,artist_obj| sum + artist_obj.years_experience}
     end
 
+  
     def self.most_prolific
-     
-      artist_array =  Artist.all.map{|artist| artist.name}
-      artist_exp =  Artist.all.map{|artist| artist.years_experience}
-      artist_painting_num =  Artist.all.map{|artist| artist.paintings.length}
-      perc = artist_painting_num.zip(artist_exp).map{|artist_painting_num, artist_exp| (artist_painting_num.to_f / artist_exp.to_f) * 100}
-
-      hash = Hash[artist_array.zip(perc)]
-      
-      Artist.all.find{|artist| artist.name == hash.key(hash.values.max)}
-
-      
+      Artist.all.max_by{|artist_obj| artist_obj.paintings.length/artist_obj.years_experience}
     end
 
     def create_painting(title,price,gallery)

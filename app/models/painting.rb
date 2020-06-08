@@ -22,13 +22,12 @@ class Painting
   end
 
   def self.total_price
-    price_array = Painting.all.map{|painting_obj| painting_obj.price}
-      price_array.inject(0){|sum,i| sum + i}
+    Painting.all.inject(0){|sum,painting_obj| sum + painting_obj.price}
   end
 
 end
 
-davinci = Artist.new("Leonardo Da Vinci", 34)
+davinci = Artist.new("Leonardo Da Vinci", 3)
 picasso = Artist.new("Pablo Picasso", 25)
 turner = Artist.new("William Turner", 12)
 
