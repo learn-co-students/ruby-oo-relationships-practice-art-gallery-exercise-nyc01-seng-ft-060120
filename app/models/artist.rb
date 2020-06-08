@@ -1,11 +1,12 @@
 class Artist
 
-  attr_reader :name, :years_experience
+  attr_reader :name, :years_experience, :donor
   @@all = []
 
-  def initialize(name, years_experience)
+  def initialize(name, years_experience,*donor)
     @name = name
     @years_experience = years_experience
+    @donor = donor
     @@all << self
 
   end
@@ -39,9 +40,18 @@ class Artist
       Painting.new(title,price,self,gallery)
     end
 
+    def donor_list
+      self.donor.map{|donor| donor.name}
+    end
+
+    def total_donations
+      self.donor.inject(0){|sum,i| sum + i.amount}
+    end
+
+
 end
 
-
+  # Artist should know the total amount donated to them
 
     # Artist.all---> Returns an array of all the artists
 
