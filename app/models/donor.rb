@@ -13,7 +13,7 @@ class Donor
   end
 
   def artists
-    Artist.all.select { |artist| artist.donor == self }.map{ |artist| artist.name }.uniq
+    Artist.all.select { |artist| artist.donors.include?(self) }.map{ |artist| artist.name }.uniq
   end
-  
+
 end

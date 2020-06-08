@@ -1,12 +1,12 @@
 class Artist
   @@all = []
 
-  attr_reader :name, :years_experience, :donor
+  attr_reader :name, :years_experience, :donors
 
-  def initialize(name, years_experience, donor)
+  def initialize(name, years_experience, donors)
     @name = name
     @years_experience = years_experience
-    @donor = donor
+    @donors = donors
     @@all << self
   end
 
@@ -15,15 +15,15 @@ class Artist
   end
 
   def paintings
-    Painting.all.select { |painting| painting.artist == self}
+    Painting.all.select { |painting| painting.artist == self }
   end
 
   def galleries
-    paintings.map { |painting| painting.gallery}.uniq
+    paintings.map { |painting| painting.gallery }.uniq
   end
 
   def cities
-    galleries.map { |gallery| gallery.city}.uniq
+    galleries.map { |gallery| gallery.city }.uniq
   end
 
   def self.total_experience
@@ -31,15 +31,19 @@ class Artist
   end
 
   def self.most_prolific
-    Artist.all.max_by { |artist| artist.paintings.length / artist.years_experience}
+    Artist.all.max_by { |artist| artist.paintings.length / artist.years_experience }
   end
 
   def create_painting(title, price, gallery)
     Painting.new(title, price, self, gallery)
   end
 
-  def show_donor
-    return "Donor: #{@donor.name} | Donor amt: #{@donor.amount}"
+  def total_donations
+    @donors.sum{ |e| e.amount }
+  end
+
+  def all_donors_by_name
+    @donors.map{ |donor| donor.name }
   end
 
 end
