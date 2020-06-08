@@ -34,7 +34,7 @@ aria = Donor.new("Aria",15)
 jerry = Donor.new("Jerry",10)
 
 davinci = Artist.new("Leonardo Da Vinci", 3,sally,aria)
-picasso = Artist.new("Pablo Picasso", 25,aria)
+picasso = Artist.new("Pablo Picasso", 25,aria,jerry)
 turner = Artist.new("William Turner", 12,aria,sally,jerry)
 
 haven = Gallery.new("Haven Gallery", "San Francisco")

@@ -16,15 +16,15 @@ class Artist
     end
 
     def paintings
-      Painting.all.select {|paintings_obj| paintings_obj.artist == self}
+      Painting.all.select {|painting_obj| painting_obj.artist == self}
     end
 
     def galleries
-      self.paintings.map{|paintings_obj| paintings_obj.gallery}.uniq
+      self.paintings.map{|painting_obj| painting_obj.gallery}.uniq
     end
 
     def cities
-      self.galleries.map{|paintings_obj| paintings_obj.city}.uniq
+      self.galleries.map{|painting_obj| painting_obj.city}.uniq
     end
 
     def self.total_experience

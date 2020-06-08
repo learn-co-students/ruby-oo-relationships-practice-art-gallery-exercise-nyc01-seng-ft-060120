@@ -27,4 +27,4 @@ end
         # Artist can now have many Donors
         # Artist should know the names of all their donors
         # Donor should still know the names of all their Artists
-# Artist should know the total amount donated to them
+        # Artist should know the total amount donated to them
