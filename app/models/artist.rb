@@ -27,7 +27,7 @@ class Artist
   end
 
   def self.total_experience
-    Artist.all.inject(0){ |sum, e| sum + e.years_experience}
+    Artist.all.sum{ |e| e.years_experience }
   end
 
   def self.most_prolific
