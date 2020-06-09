@@ -1,19 +1,19 @@
 require_relative '../config/environment.rb'
 
 class Painting
-    
+
     attr_accessor :title, :price, :gallery
     attr_reader :artist
   
     @@all = []
   
-    def initialize(title, price, artist, gallery)
-      @title = title
-      @price = price
-      @artist = artist
-      @gallery = gallery
-      @@all << self
-    end
+    def initialize(hash)
+        @title = hash[:title]
+        @price = hash[:price]
+        @artist = hash[:artist]
+        @gallery = hash[:gallery]
+        @@all << self
+      end
   
     def self.all
       @@all
@@ -25,19 +25,21 @@ class Painting
       end
     end
   
-  end
+end
   
 
-artist1 = Artist.new("Johann", 10)
-artist2 = Artist.new("Jamil", 5)
+artist1 = Artist.new({name: "Johann", years_experience: 10, donor: "Sam"})
+artist2 = Artist.new({name: "Jamil", years_experience: 5, donor: "Bill"})
 
-painting1 = Painting.new("Art", 100, "Johann", "Louvre")
-painting2 = Painting.new("Ugly", 1000, "Johann", "Louvre")
-painting3 = Painting.new("Smart", 1000, "Jamil", "MET")
+painting1 = Painting.new({title: "Art", price: 100, artist: "Johann", gallery: "Louvre"})
+painting2 = Painting.new({title: "Ugly", price: 1000, artist: "Johann", gallery: "Louvre"})
+painting3 = Painting.new({title: "Smart", price: 1000, artist: "Jamil", gallery: "MET"})
 
-gallery1 = Gallery.new("Louvre", "Paris")
-gallery2 = Gallery.new("MET", "NYC")
+gallery1 = Gallery.new({gallery: "Louvre", city: "Paris"})
+gallery2 = Gallery.new({gallery: "MET", city: "NYC"})
 
+donor1 = Donor.new({name: "Bill", amount: 235})
+donor2 = Donor.new({name: "Sam", amount: 196})
 
 binding.pry
 

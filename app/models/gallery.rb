@@ -4,9 +4,9 @@ class Gallery
 
   @@all = []
 
-  def initialize(name, city)
-    @name = name
-    @city = city
+  def initialize(hash)
+    @name = hash[:name]
+    @city = hash[:city]
     @@all << self
   end
 

@@ -4,11 +4,11 @@ class Painting
 
   @@all = []
 
-  def initialize(title, price, artist, gallery)
-    @title = title
-    @price = price
-    @artist = artist
-    @gallery = gallery
+  def initialize(hash)
+    @title = hash[:title]
+    @price = hash[:price]
+    @artist = hash[:artist]
+    @gallery = hash[:gallery]
     @@all << self
   end
 
