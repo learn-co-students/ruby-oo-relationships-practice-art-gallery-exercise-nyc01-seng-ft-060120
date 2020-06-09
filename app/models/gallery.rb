@@ -2,27 +2,41 @@ class Gallery
 
   attr_reader :name, :city
   @@all=[]
-  @@names=[]
 
   def initialize(name, city)
     @name = name
     @city = city
     @@all<<self
-    @@names<<@name
   end
-  def all 
+  def self.all 
     @@all 
   end
   def paintings
-    Painting.@@all
+    Painting.all.select do |painting|
+      painting.gallery==self
+    end 
   end
   def artists
-    Artist.@@all 
+    Painting.all.map do |painting|
+      painting.artist 
+    end
   end
   def artist_names
-    @@names 
+    self.artists.map do |artist|
+      artist.name 
+    end
   end
   def most_expensive_painting
+    art= self.paintings
+    max=-1
+    art.each do |painting|
+      if max<painting.price
+        max=painting.price
+      end
+    end
+    art.find do |painting|
+      painting.price==max
+    end
   end 
 
 

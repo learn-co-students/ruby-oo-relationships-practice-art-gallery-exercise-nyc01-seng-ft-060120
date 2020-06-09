@@ -1,43 +1,56 @@
 class Artist
-
   attr_reader :name, :years_experience
   @@all=[]
-  @@years_experience=[]
   
-
   def initialize(name, years_experience)
     @name = name
     @years_experience = years_experience
     @@all<<self
-    @@years_experience<<years_experience
-    
   end
   def years_experience=(years_experience)
     @years_experience=years_experience
   end 
 
-  def all
+  def self.all
     @@all
   end 
   def paintings
-    Artist.painting.@@all 
+    Painting.all.select do |painting|
+      painting.artist==self
+    end 
   end 
   def galleries
-    Artist.Gallery.@@all
+    self.paintings.map do |painting|
+      painting.gallery
+    end 
   end 
-  def total_experience
+  def cities
+    self.galleries.map do |gallery|
+      gallery.city
+    end
+  end 
+  def self.total_experience
     sum=0
-    years_experience.each{|b| sum+=b}
+    @@all.each do |b| 
+      sum+=b.years_experience
+    end
+    sum 
   end 
-  def most_prolific
-
+  def self.most_prolific
+    max=-1
+    @@all.each do |artist|
+      score=artist.paintings.length / artist.years_experience
+      if max<score
+        max=score 
+      end 
+    end 
+    @@all.find do |artist|
+      score=artist.paintings.length / artist.years_experience 
+      score==max 
+    end 
   end 
-  def create_painting
-    Artist=Painting.new
+  def create_painting(title, price, gallery)
+    Painting.new(title, price, self, gallery)
   end
-
-
-
-
 end
 # I used stack overflow to help me get the total experience. Here is the link: https://stackoverflow.com/questions/1538789/how-to-sum-array-of-numbers-in-ruby

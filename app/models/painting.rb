@@ -1,25 +1,23 @@
 class Painting
 
-  attr_reader :title, :price
-
+  attr_reader :title, :price, :artist, :gallery
   @@all = []
-  @@price=[]
   
-  def initialize(title, price)
+  def initialize(title, price, artist, gallery)
     @title = title
     @price = price
+    @artist = artist 
+    @gallery = gallery
     @@all<<self
-    @@price<<@price
   end
-  def all
+  def self.all
     @@all 
   end
-  def total_price
+  def self.total_price
     sum=0
-    years_experience.each{|b| sum+=b}
+    @@all.each do |painting|
+      sum+=painting.price 
+    end 
+    sum
   end 
-
-
 end
-
-# I used stack overflow to help me get the total price. Here is the link: https://stackoverflow.com/questions/1538789/how-to-sum-array-of-numbers-in-ruby
