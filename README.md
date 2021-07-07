@@ -71,3 +71,15 @@ An artist can, of course, have many paintings. Paintings can only be in one gall
 
   * `Gallery#most_expensive_painting`
     * Returns an `instance` of the most expensive painting in a gallery
+
+    ***DONOR***
+
+Artist now has a Donor
+Donor has a name and an amount
+Artist should know their Donor's name and amount 
+Donor should know all their Artists' names (the list should not have a duplicate name if they've donated to the same artist twice)
+
+Artist can now have many Donors
+Artist should know the names of all their donors
+Donor should still know the names of all their Artists
+Artist should know the total amount donated to them
